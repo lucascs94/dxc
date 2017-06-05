@@ -1,4 +1,4 @@
-package googleSearchTests;
+package lucas;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -12,7 +12,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class firstTest {
+public class GoogleSearchTests {
 
 	private static WebDriver driver;
 
