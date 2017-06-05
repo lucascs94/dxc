@@ -1,7 +1,5 @@
 package lucas;
 
-import java.util.Properties;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

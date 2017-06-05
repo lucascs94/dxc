@@ -13,24 +13,24 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 public class ModularMethods {
-	
+
 	public static Properties getProperties(){
 		Properties props = new Properties();
 		try {
-			FileInputStream file = new FileInputStream("C:/Users/carassai/Desktop/eclipse/config.properties");
+			FileInputStream file = new FileInputStream("C:/GWA/config.properties");
 			props.load(file);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return props;
 	}
-	
+
 	public static void tiraScreenshot(WebDriver driver){
 		SimpleDateFormat dateFormat = new SimpleDateFormat("DD-MM-YYYY/hh-mm-ssaa");
 		File scr = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		String destfile = dateFormat.format(new Date()) + ".png";
 		try {
-			FileUtils.copyFile(scr, new File("C:/Users/carassai/Desktop/eclipse/Screenshots/"+destfile));
+			FileUtils.copyFile(scr, new File("C:/GWA/Screenshots/"+destfile));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
