@@ -1,5 +1,7 @@
 package lucas;
 
+import java.util.Properties;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,9 +20,9 @@ public class GoogleSearchTests {
 
 	@BeforeClass
 	public static void DriverSetUp(){
-		System.setProperty("webdriver.gecko.driver", "C:/Users/carassai/Desktop/eclipse/geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver", modular.ModularMethods.getProperties().getProperty("geckodriver.path"));
 		driver =  new FirefoxDriver();
-		driver.get("http://google.com.br");
+		driver.get(modular.ModularMethods.getProperties().getProperty("url"));
 		driver.manage().window().maximize();
 	}
 
