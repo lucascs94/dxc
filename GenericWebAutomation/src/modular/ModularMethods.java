@@ -26,7 +26,7 @@ public class ModularMethods {
 	}
 
 	public static void tiraScreenshot(WebDriver driver){
-		SimpleDateFormat dateFormat = new SimpleDateFormat("DD-MM-YYYY/hh-mm-ssaa");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-YYYY/HH-mm-ss");
 		File scr = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		String destfile = dateFormat.format(new Date()) + ".png";
 		try {
