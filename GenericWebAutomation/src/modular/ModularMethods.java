@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -14,16 +13,21 @@ import org.openqa.selenium.WebDriver;
 
 public class ModularMethods {
 
-	//método para setar as propriedades de inicialização do geckodriver e webdriver
+	//método para setar as propriedades de inicialização do webdriver
 	public static Properties getProperties(){
 		Properties props = new Properties();
 		try {
-			FileInputStream file = new FileInputStream("C:/GWA/config.properties");
+			FileInputStream file = new FileInputStream(System.getProperty("user.dir")+"/configs/config.properties");
 			props.load(file);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return props;
+	}
+	
+	//configura a localização do geckodriver
+	public static void setGeckodriverLocation(){
+		System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/configs/geckodriver.exe");
 	}
 
 	//metodo para tirar screenshots da tela durante a execução dos scripts

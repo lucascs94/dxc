@@ -21,7 +21,7 @@ public class GoogleSearchTests {
 	@BeforeClass
 	public static void DriverSetUp(){
 		Properties prop = modular.ModularMethods.getProperties();
-		System.setProperty("webdriver.gecko.driver", prop.getProperty("geckodriver.path"));
+		modular.ModularMethods.setGeckodriverLocation();
 		driver =  new FirefoxDriver();
 		driver.get(prop.getProperty("url"));
 		driver.manage().window().maximize();
