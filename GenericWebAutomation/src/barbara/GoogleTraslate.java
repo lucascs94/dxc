@@ -34,7 +34,8 @@ public class GoogleTraslate {
 		driver.findElement(By.name("text")).sendKeys("the book is on the table");;
 		driver.findElement(By.xpath("//div[2]/input")).click();
 		
-		
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[3]/div/div/span")));
+		driver.findElement(By.xpath("//div[3]/div/div/span")).click();
 	}
 }
 
