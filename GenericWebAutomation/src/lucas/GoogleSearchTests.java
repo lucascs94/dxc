@@ -33,7 +33,7 @@ public class GoogleSearchTests {
 	//	}
 
 	@Test
-	public void testOne(){
+	public void screenshotTest(){
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		
 		//tira screenshot
