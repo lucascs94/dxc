@@ -14,6 +14,7 @@ import org.openqa.selenium.WebDriver;
 
 public class ModularMethods {
 
+	//método para setar as propriedades de inicialização do geckodriver e webdriver
 	public static Properties getProperties(){
 		Properties props = new Properties();
 		try {
@@ -25,6 +26,7 @@ public class ModularMethods {
 		return props;
 	}
 
+	//metodo para tirar screenshots da tela durante a execução dos scripts
 	public static void tiraScreenshot(WebDriver driver){
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-YYYY/HH-mm-ss");
 		File scr = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
