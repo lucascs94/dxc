@@ -29,6 +29,11 @@ public class ModularMethods {
 	public static void setGeckodriverLocation(){
 		System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/configs/geckodriver.exe");
 	}
+	
+	//configurar a localização do chromedriver
+	public static void setChromeDriverLocation(){
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/configs/chromedriver.exe"); 
+	}
 
 	//metodo para tirar screenshots da tela durante a execução dos scripts
 	public static void tiraScreenshot(WebDriver driver){
