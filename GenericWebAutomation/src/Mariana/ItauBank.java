@@ -34,6 +34,8 @@ public class ItauBank {
 	ag.sendKeys("6319");
 	//ag.submit();
 	
+	WebElement numConta = driver.findElement(By.id("campo_conta")); 
+	numConta.sendKeys("13530-4");
 	
 		
 }
