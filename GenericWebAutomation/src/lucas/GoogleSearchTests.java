@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class GoogleSearchTests {
 
 	private static WebDriver driver;
-
+	
 	@BeforeClass
 	public static void DriverSetUp(){
 		Properties prop = modular.ModularMethods.getProperties();
@@ -27,15 +27,25 @@ public class GoogleSearchTests {
 		driver.manage().window().maximize();
 	}
 
-	//	@Before
-	//	public void TestSetUp(){
-	//		
-	//	}
+	@Before
+	public void TestSetUp(){
 
+	}
+
+	@After
+	public void TestTearDown(){
+
+	}
+
+	@AfterClass
+	public static void DriverTearDown(){
+		//driver.quit();
+	}
+	
 	@Test
 	public void screenshotTest(){
 		WebDriverWait wait = new WebDriverWait(driver, 30);
-		
+
 		//tira screenshot
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("lst-ib")));
 		modular.ModularMethods.tiraScreenshot(driver);
@@ -48,15 +58,5 @@ public class GoogleSearchTests {
 		//tira screenshot
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("hdtb-mitem")));
 		modular.ModularMethods.tiraScreenshot(driver);
-	}
-
-	//	@After
-	//	public void TestTearDown(){
-	//
-	//	}
-
-	@AfterClass
-	public static void DriverTearDown(){
-		//driver.quit();
 	}
 }
