@@ -41,9 +41,7 @@ public class ItauBank {
 		
 		WebElement botaoAcessar = driver.findElement(By.className("btnSubmit")); 
 		botaoAcessar.click();
-			
-	
-	
+				
 }
 	
 	@AfterClass
