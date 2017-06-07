@@ -44,7 +44,7 @@ public class GoogleSearchTests {
 		WebElement we = driver.findElement(By.id("lst-ib"));
 		we.sendKeys("testes automatizados com selenium");
 		we.submit();
-
+		
 		//tira screenshot
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("hdtb-mitem")));
 		modular.ModularMethods.tiraScreenshot(driver);

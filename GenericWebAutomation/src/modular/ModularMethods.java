@@ -14,10 +14,10 @@ import org.openqa.selenium.WebDriver;
 public class ModularMethods {
 
 	//método para setar as propriedades de inicialização do webdriver
-	public static Properties getProperties(){
+	public static Properties getProperties(String nomeArq){
 		Properties props = new Properties();
 		try {
-			FileInputStream file = new FileInputStream(System.getProperty("user.dir")+"/configs/config.properties");
+			FileInputStream file = new FileInputStream(System.getProperty("user.dir")+"/configs/"+nomeArq);
 			props.load(file);
 		} catch (Exception e) {
 			e.printStackTrace();
