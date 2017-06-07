@@ -37,7 +37,11 @@ public class ItauBank {
 	WebElement numConta = driver.findElement(By.id("campo_conta")); 
 	numConta.sendKeys("13530-4");
 	
-		
+	WebElement botaoAcessar = driver.findElement(By.className("btnSubmit")); 
+	botaoAcessar.click();
+	
+	
+	
 }
 	
 	@AfterClass
