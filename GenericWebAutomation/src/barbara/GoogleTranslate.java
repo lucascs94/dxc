@@ -18,7 +18,7 @@ public class GoogleTranslate {
 	
 	@Before
 	public void setUp () {
-		Properties prop = modular.ModularMethods.getProperties();
+		Properties prop = modular.ModularMethods.getProperties("configBarbara.txt");
 		System.setProperty("webdriver.gecko.driver", prop.getProperty("geckodriver.path"));
 		driver =  new FirefoxDriver();
 		driver.get(prop.getProperty("url1"));

@@ -1,0 +1,1 @@
+url1 https://translate.google.com/?hl=pt-BR
