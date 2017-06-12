@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -19,9 +20,15 @@ public class GoogleTranslate {
 	@Before
 	public void setUp () {
 		Properties prop = modular.ModularMethods.getProperties("configBarbara.txt");
-		System.setProperty("webdriver.gecko.driver", prop.getProperty("geckodriver.path"));
-		driver =  new FirefoxDriver();
+		//System.setProperty("webdriver.gecko.driver", prop.getProperty("geckodriver.path"));
+		//driver =  new FirefoxDriver();
+		modular.ModularMethods.setChromeDriverLocation();
+		driver = new ChromeDriver();
 		driver.get(prop.getProperty("url1"));
+		driver.manage().window().maximize();
+		
+		
+		
 		driver.manage().window().maximize();
 	
 	}
@@ -33,7 +40,7 @@ public class GoogleTranslate {
 		
 		//Escrever texto a ser traduzido
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("text")));
-		driver.findElement(By.name("text")).sendKeys("the book is on the table");;
+		driver.findElement(By.name("text")).sendKeys("test automation");;
 		driver.findElement(By.xpath("//div[2]/input")).click();
 		
 		//Escutar leitura do texto
