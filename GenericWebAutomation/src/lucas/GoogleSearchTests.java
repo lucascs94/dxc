@@ -1,8 +1,6 @@
 package lucas;
 
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,10 +14,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-//@RunWith(Parameterized.class)
 public class GoogleSearchTests {
 
-	//private String searchContent;
 	private Properties prop;
 	private WebDriver driver;
 
@@ -46,21 +42,6 @@ public class GoogleSearchTests {
 	public void DriverTearDown(){
 		driver.quit();
 	}
-
-	//	public GoogleSearchTests(String searchContent){
-	//		this.searchContent = searchContent;
-	//	}
-
-	//	@Parameters
-	//	public static Collection<Object[]> data() {
-	//		return Arrays.asList(new Object[][] {
-	//			{"Jose"},
-	//			{"Maria"},
-	//			{"João"},
-	//			{"Carla"}
-	//		});
-	//	}
-
 
 	@DataProvider(name = "SearchContent")
 	public static Object[][] searchContent() {
