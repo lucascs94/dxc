@@ -24,7 +24,6 @@ public class GoogleSearchTests {
 		prop = modular.ModularMethods.getProperties("config.properties");
 		modular.ModularMethods.setGeckodriverLocation();
 		driver =  new FirefoxDriver();
-		//driver.get(prop.getProperty("url"));
 		driver.manage().window().maximize();	
 	}
 
@@ -45,7 +44,7 @@ public class GoogleSearchTests {
 
 	@DataProvider(name = "SearchContent")
 	public static Object[][] searchContent() {
-		return new Object[][] {{"joão"}, {"maria"}};
+		return new Object[][] {{"como automatizar testes com selenium"}, {"como automatizar testes com testng"}};
 	}	
 
 	@Test(dataProvider = "SearchContent")
@@ -57,14 +56,11 @@ public class GoogleSearchTests {
 		modular.ModularMethods.tiraScreenshot(driver);
 
 		//executa a pesquisa usando dados parâmetrizados 
-		WebElement we = driver.findElement(By.id("lst-ib"));
-		we.sendKeys(searchContent);
-		we.submit();
+		driver.findElement(By.id("lst-ib")).sendKeys(searchContent);
+		driver.findElement(By.name("btnG")).click();
 
 		//tira screenshot
 		wait.until(ExpectedConditions.elementToBeClickable(By.className("hdtb-mitem")));
 		modular.ModularMethods.tiraScreenshot(driver);
-
-		we.clear();
 	}
 }
