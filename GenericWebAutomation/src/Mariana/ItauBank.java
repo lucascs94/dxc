@@ -29,6 +29,7 @@ public class ItauBank {
 	}
 	
 	@Test
+	//Acessar conta - parte 1
 	public void acessarConta(){
 	WebDriverWait wait = new WebDriverWait(driver, 30);
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("campo_agencia")));
@@ -41,12 +42,21 @@ public class ItauBank {
 		
 		WebElement botaoAcessar = driver.findElement(By.className("btnSubmit")); 
 		botaoAcessar.click();
-				
+		
+		//
 }
+	
+	@Test
+	//Alternar valores no botão de acesso:
+	
+	
+	
+	
+	
 	
 	@AfterClass
 	public static void DriverTearDown(){
-		//driver.quit();
+		driver.quit();
 	}
 }
 
