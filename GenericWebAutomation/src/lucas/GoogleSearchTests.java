@@ -79,7 +79,6 @@ public class GoogleSearchTests {
 		WebElement we = driver.findElement(By.id("lst-ib"));
 		we.sendKeys(searchContent);
 		we.submit();
-		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
 		//tira screenshot
 		wait.until(ExpectedConditions.elementToBeClickable(By.className("hdtb-mitem")));
