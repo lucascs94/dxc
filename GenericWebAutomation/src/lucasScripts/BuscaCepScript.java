@@ -3,6 +3,7 @@ package lucasScripts;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Properties;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,22 +16,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import lucasObjects.Auxiliar;
-import lucasObjects.GoogleSearchPage;
+import lucasObjects.BuscaCepPage;
 
-@RunWith(Parameterized.class)
-public class GoogleSearchScript {
-
-	private String searchContent;
+//@RunWith(Parameterized.class)
+public class BuscaCepScript {
+	private String cep;
 	private static Properties prop;
 	private static WebDriver driver;
 
-	public GoogleSearchScript(String searchContent){
-		this.searchContent = searchContent;
-	}
+//	public BuscaCepScript(String cep){
+//		this.cep = cep;
+//	}
 
 	@BeforeClass
 	public static void DriverSetUp(){
-		prop = modular.ModularMethods.getProperties("config.properties");
+		prop = modular.ModularMethods.getProperties("configLucas.txt");
 		modular.ModularMethods.setGeckodriverLocation();
 		driver =  new FirefoxDriver();
 		driver.manage().window().maximize();	
@@ -50,20 +50,20 @@ public class GoogleSearchScript {
 		driver.quit();
 	}
 
-	@Parameters
-	public static Collection<Object[]> searchContent() {
-		return Arrays.asList(new Object[][] {{"como automatizar testes com selenium"}, {"como automatizar testes com testng"}});
-	}	
+//	@Parameters
+//	public static Collection<Object[]> cep() {
+//		return Arrays.asList(new Object[][] {{"91520210"}, {"96270000"}, {"90650003"}});
+//	}	
 
 	@Test
 	public void screenshotTest(){
 		Auxiliar aux = new Auxiliar(driver);
-		GoogleSearchPage home = new GoogleSearchPage(driver);
-		home.acessa(prop.getProperty("url"));
-		aux.esperaFicarVisivelID("lst-ib");
-		aux.tiraScreenshot("GoogleSearchScript", "screenshotTest");
-		home.pesquisa(searchContent);
-		aux.esperaFicarVisivelClass("hdtb-mitem");
-		aux.tiraScreenshot("GoogleSearchScript", "screenshotTest");
+		BuscaCepPage home = new BuscaCepPage(driver);
+		home.acessar(prop.getProperty("url"));
+		aux.esperaFicarVisivelID("cep");
+		aux.tiraScreenshot("BuscaCepScript","screenshotTest");
+		home.buscarEnderecoPorCep("91520210");
+		aux.esperaFicarVisivelXpath("//table[@class='tmptabela']");
+		aux.tiraScreenshot("BuscaCepScript","screenshotTest");
 	}
 }
