@@ -1,9 +1,8 @@
-package lucas;
+package lucasScripts;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Properties;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -12,23 +11,20 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-
+import lucasObjects.Auxiliar;
+import lucasObjects.GoogleSearchPage;
 
 @RunWith(Parameterized.class)
-public class GoogleSearchsWithJUnit {
+public class GoogleSearchScript {
 
 	private String searchContent;
 	private static Properties prop;
 	private static WebDriver driver;
 
-	public GoogleSearchsWithJUnit(String searchContent){
+	public GoogleSearchScript(String searchContent){
 		this.searchContent = searchContent;
 	}
 
@@ -42,7 +38,6 @@ public class GoogleSearchsWithJUnit {
 
 	@Before
 	public void TestSetUp(){
-		driver.get(prop.getProperty("url"));
 	}
 
 	@After
@@ -62,18 +57,13 @@ public class GoogleSearchsWithJUnit {
 
 	@Test
 	public void screenshotTest(){
-		WebDriverWait wait = new WebDriverWait(driver, 30);
-
-		//tira screenshot
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("lst-ib")));
-		modular.ModularMethods.tiraScreenshot(driver);
-
-		//executa a pesquisa usando dados parâmetrizados 
-		driver.findElement(By.id("lst-ib")).sendKeys(searchContent);
-		driver.findElement(By.name("btnG")).click();
-
-		//tira screenshot
-		wait.until(ExpectedConditions.elementToBeClickable(By.className("hdtb-mitem")));
-		modular.ModularMethods.tiraScreenshot(driver);
+		Auxiliar aux = new Auxiliar(driver);
+		GoogleSearchPage home = new GoogleSearchPage(driver);
+		home.acessa(prop.getProperty("url"));
+		aux.esperaFicarVisivelID("lst-ib");
+		aux.tiraScreenshot();
+		home.pesquisa(searchContent);
+		aux.esperaFicarVisivelClass("hdtb-mitem");
+		aux.tiraScreenshot();
 	}
 }

@@ -1,4 +1,4 @@
-package lucas;
+package lucasScripts;
 
 import java.util.Properties;
 import org.openqa.selenium.By;
