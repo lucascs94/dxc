@@ -21,8 +21,8 @@ import lucasObjects.GoogleSearchPage;
 public class GoogleSearchScript {
 
 	private String searchContent;
-	private static Properties prop;
 	private static WebDriver driver;
+	private static Auxiliar aux;
 
 	public GoogleSearchScript(String searchContent){
 		this.searchContent = searchContent;
@@ -30,9 +30,9 @@ public class GoogleSearchScript {
 
 	@BeforeClass
 	public static void DriverSetUp(){
-		prop = modular.ModularMethods.getProperties("config.properties");
-		modular.ModularMethods.setGeckodriverLocation();
 		driver =  new FirefoxDriver();
+		aux = new Auxiliar(driver, "config.properties");
+		aux.setGeckodriverLocation();
 		driver.manage().window().maximize();	
 	}
 
@@ -57,9 +57,8 @@ public class GoogleSearchScript {
 
 	@Test
 	public void screenshotTest(){
-		Auxiliar aux = new Auxiliar(driver);
 		GoogleSearchPage home = new GoogleSearchPage(driver);
-		home.acessa(prop.getProperty("url"));
+		home.acessa(aux.getProperty("url"));
 		aux.esperaFicarVisivelID("lst-ib");
 		aux.tiraScreenshot("GoogleSearchScript", "screenshotTest");
 		home.pesquisa(searchContent);
